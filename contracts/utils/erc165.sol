@@ -14,9 +14,7 @@ interface ERC165
    * @param _interfaceID The interface identifier, as specified in ERC-165.
    * @return True if _interfaceID is supported, false otherwise.
    */
-  function supportsInterface(
-    bytes4 _interfaceID
-  )
+  function supportsInterface(bytes4 _interfaceID)
     external
     view
     returns (bool);
