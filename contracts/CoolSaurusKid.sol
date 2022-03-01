@@ -1,8 +1,9 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
 import "./tokens/nf-token-metadata.sol";
 import "./tokens/nf-token-enumerable.sol";
-import "./ownership/ownable.sol";
 import "./access/AccessControl.sol";
 
 
@@ -14,12 +15,12 @@ contract CoolSaurusKid is
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
-    constructor(string memory _name, string memory _symbol, address mineter, address burner)
+    constructor(string memory _name, string memory _symbol)
     {
         nftName = _name;
         nftSymbol = _symbol;
-        _setupRole(MINTER_ROLE, minter);
-        _setupRole(BURNER_ROLE, burner);
+        
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     function mint(address _to, uint256 _tokenId, string calldata _uri)
